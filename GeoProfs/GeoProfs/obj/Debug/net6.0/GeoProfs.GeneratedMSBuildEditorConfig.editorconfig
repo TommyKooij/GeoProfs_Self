@@ -15,6 +15,30 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\tjwck\OneDrive\Documenten\School\GeoProfs4\GeoProfs\GeoProfs
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/tjwck/OneDrive/Documenten/School/GeoProfs4/GeoProfs/GeoProfs/Pages/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tjwck/OneDrive/Documenten/School/GeoProfs4/GeoProfs/GeoProfs/Pages/Departments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tjwck/OneDrive/Documenten/School/GeoProfs4/GeoProfs/GeoProfs/Pages/Departments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tjwck/OneDrive/Documenten/School/GeoProfs4/GeoProfs/GeoProfs/Pages/Departments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tjwck/OneDrive/Documenten/School/GeoProfs4/GeoProfs/GeoProfs/Pages/Departments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tjwck/OneDrive/Documenten/School/GeoProfs4/GeoProfs/GeoProfs/Pages/Departments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tjwck/OneDrive/Documenten/School/GeoProfs4/GeoProfs/GeoProfs/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

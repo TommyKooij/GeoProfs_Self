@@ -23,7 +23,7 @@ namespace GeoProfs.Pages.Workers
         }
 
         [BindProperty]
-        public Worker worker { get; set; }
+        public Worker Worker { get; set; }
         public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
@@ -33,11 +33,11 @@ namespace GeoProfs.Pages.Workers
                 return NotFound();
             }
 
-            Student = await _context.Students
+            Worker = await _context.Workers
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Student == null)
+            if (Worker == null)
             {
                 return NotFound();
             }
@@ -57,16 +57,16 @@ namespace GeoProfs.Pages.Workers
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
+            var worker = await _context.Workers.FindAsync(id);
 
-            if (student == null)
+            if (worker == null)
             {
                 return NotFound();
             }
 
             try
             {
-                _context.Students.Remove(student);
+                _context.Workers.Remove(worker);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
