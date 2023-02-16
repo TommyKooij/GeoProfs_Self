@@ -1,0 +1,31 @@
+﻿@page
+@model AboutModel
+
+@{
+    ViewData["Title"] = "Workers Body Statistics";
+}
+
+<h2>Worker Body Statistics</h2>
+
+<table>
+    <tr>
+        <th>
+            Enrollment Date
+        </th>
+        <th>
+            Workers
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Workers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @item.WorkerCount
+            </td>
+        </tr>
+    }
+</table>
