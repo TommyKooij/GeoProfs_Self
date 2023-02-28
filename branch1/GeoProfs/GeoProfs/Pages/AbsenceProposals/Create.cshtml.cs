@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using GeoProfs.Data;
 using GeoProfs.Models;
 
-namespace GeoProfs.Pages.Workers
+namespace GeoProfs.Pages.AbsenceProposals
 {
     public class CreateModel : PageModel
     {
@@ -25,25 +25,21 @@ namespace GeoProfs.Pages.Workers
         }
 
         [BindProperty]
-        public Worker Worker { get; set; }
-
+        public AbsenceProposal AbsenceProposal { get; set; }
+        
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            var emptyWorker = new Worker();
-
-            if (await TryUpdateModelAsync<Worker>(
-                emptyWorker,
-                "worker",   // Prefix for form value.
-                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate, s => s.Role, s => s.IsPresent))
+          if (!ModelState.IsValid)
             {
-                _context.Workers.Add(emptyWorker);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return Page();
             }
 
-            return Page();
+            _context.AbsenceProposals.Add(AbsenceProposal);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
     }
 }

@@ -17,12 +17,16 @@ namespace GeoProfs.Data
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<AbsenceProposal> AbsenceProposals { get; set; }
+        public DbSet<Absence> Absences { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
             modelBuilder.Entity<Worker>().ToTable("Student");
             modelBuilder.Entity<Department>().ToTable("Department");
+            modelBuilder.Entity<AbsenceProposal>().ToTable("Absence Proposal");
+            modelBuilder.Entity<Absence>().ToTable("Absence");
         }
     }
 }

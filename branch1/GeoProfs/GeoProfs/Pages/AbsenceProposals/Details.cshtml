@@ -1,0 +1,55 @@
+﻿@page
+@model GeoProfs.Pages.AbsenceProposals.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AbsenceProposal</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.FirstMidName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.FirstMidName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.EnrollmentDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.EnrollmentDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.Reason)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.Reason)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.Reasoning)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.Reasoning)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.AbsenceDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.AbsenceDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.AbsenceProposal?.AbsenceProposalID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
