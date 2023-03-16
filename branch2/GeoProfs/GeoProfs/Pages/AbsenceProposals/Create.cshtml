@@ -1,0 +1,59 @@
+﻿@page
+@model GeoProfs.Pages.AbsenceProposals.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AbsenceProposal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AbsenceProposal.LastName" class="control-label"></label>
+                <input asp-for="AbsenceProposal.LastName" class="form-control" />
+                <span asp-validation-for="AbsenceProposal.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AbsenceProposal.FirstMidName" class="control-label"></label>
+                <input asp-for="AbsenceProposal.FirstMidName" class="form-control" />
+                <span asp-validation-for="AbsenceProposal.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AbsenceProposal.EnrollmentDate" class="control-label"></label>
+                <input asp-for="AbsenceProposal.EnrollmentDate" class="form-control" />
+                <span asp-validation-for="AbsenceProposal.EnrollmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AbsenceProposal.Reason" class="control-label"></label>
+                <input asp-for="AbsenceProposal.Reason" class="form-control" />
+                <span asp-validation-for="AbsenceProposal.Reason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AbsenceProposal.Reasoning" class="control-label"></label>
+                <input asp-for="AbsenceProposal.Reasoning" class="form-control" />
+                <span asp-validation-for="AbsenceProposal.Reasoning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AbsenceProposal.AbsenceDate" class="control-label"></label>
+                <input asp-for="AbsenceProposal.AbsenceDate" class="form-control" />
+                <span asp-validation-for="AbsenceProposal.AbsenceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
