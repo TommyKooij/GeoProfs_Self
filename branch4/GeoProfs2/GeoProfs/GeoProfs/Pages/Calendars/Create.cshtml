@@ -1,0 +1,54 @@
+﻿@page
+@model GeoProfs.Pages.Calendars.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CalendarEvent</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CalendarEvent.Title" class="control-label"></label>
+                <input asp-for="CalendarEvent.Title" class="form-control" />
+                <span asp-validation-for="CalendarEvent.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CalendarEvent.Description" class="control-label"></label>
+                <input asp-for="CalendarEvent.Description" class="form-control" />
+                <span asp-validation-for="CalendarEvent.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CalendarEvent.StartDate" class="control-label"></label>
+                <input asp-for="CalendarEvent.StartDate" class="form-control" />
+                <span asp-validation-for="CalendarEvent.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CalendarEvent.EndDate" class="control-label"></label>
+                <input asp-for="CalendarEvent.EndDate" class="form-control" />
+                <span asp-validation-for="CalendarEvent.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CalendarEvent.Type" class="control-label"></label>
+                <input asp-for="CalendarEvent.Type" class="form-control" />
+                <span asp-validation-for="CalendarEvent.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
