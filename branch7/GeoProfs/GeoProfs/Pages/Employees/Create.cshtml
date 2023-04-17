@@ -1,0 +1,75 @@
+﻿@page
+@model GeoProfs.Pages.Employees.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Employee.FirstMidName" class="control-label"></label>
+                <input asp-for="Employee.FirstMidName" class="form-control" />
+                <span asp-validation-for="Employee.FirstMidName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.LastName" class="control-label"></label>
+                <input asp-for="Employee.LastName" class="form-control" />
+                <span asp-validation-for="Employee.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.EnrollmentDate" class="control-label"></label>
+                <input asp-for="Employee.EnrollmentDate" class="form-control" />
+                <span asp-validation-for="Employee.EnrollmentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Role" class="control-label"></label>
+                <input asp-for="Employee.Role" class="form-control" />
+                <span asp-validation-for="Employee.Role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.Mail" class="control-label"></label>
+                <input asp-for="Employee.Mail" class="form-control" />
+                <span asp-validation-for="Employee.Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Employee.IsPresent" /> @Html.DisplayNameFor(model => model.Employee.IsPresent)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.maxAbsenceDays" class="control-label"></label>
+                <input asp-for="Employee.maxAbsenceDays" class="form-control" />
+                <span asp-validation-for="Employee.maxAbsenceDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.totalSickDays" class="control-label"></label>
+                <input asp-for="Employee.totalSickDays" class="form-control" />
+                <span asp-validation-for="Employee.totalSickDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.totalOffDays" class="control-label"></label>
+                <input asp-for="Employee.totalOffDays" class="form-control" />
+                <span asp-validation-for="Employee.totalOffDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
