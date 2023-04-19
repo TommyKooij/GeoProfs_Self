@@ -24,14 +24,14 @@ namespace GeoProfs.Data
 
             var employees = new Employee[]
             {
-                new Employee{FirstMidName="Carson",LastName="Alexander",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true},
-                new Employee{FirstMidName="Meredith",LastName="Alonso",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false},
-                new Employee{FirstMidName="Arturo",LastName="Anand",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true},
-                new Employee{FirstMidName="Gytis",LastName="Barzdukas",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=true},
-                new Employee{FirstMidName="Yan",LastName="Li",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false},
-                new Employee{FirstMidName="Peggy",LastName="Justice",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2016-09-01"),Role="Employee",IsPresent=true},
-                new Employee{FirstMidName="Laura",LastName="Norman",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true},
-                new Employee{FirstMidName="Nino",LastName="Olivetto",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true}
+                new Employee{FirstMidName="Carson",LastName="Alexander",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
+                new Employee{FirstMidName="Meredith",LastName="Alonso",Mail="mereditha@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false,maxAbsenceDays=30},
+                new Employee{FirstMidName="Arturo",LastName="Anand",Mail="arturoa@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
+                new Employee{FirstMidName="Gytis",LastName="Barzdukas",Mail="gytisb@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
+                new Employee{FirstMidName="Yan",LastName="Li",Mail="yanl@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false,maxAbsenceDays=30},
+                new Employee{FirstMidName="Peggy",LastName="Justice",Mail="peggyj@hotmail.com",EnrollmentDate=DateTime.Parse("2016-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
+                new Employee{FirstMidName="Laura",LastName="Norman",Mail="lauran@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
+                new Employee{FirstMidName="Nino",LastName="Olivetto",Mail="ninoo@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30}
             };
 
             var calendarEvents = new CalendarEvent[]
@@ -42,8 +42,8 @@ namespace GeoProfs.Data
 
             var absenceProposals = new AbsenceProposal[]
             {
-                new AbsenceProposal{Title="Sick Today",ReasonAbsence="Sick",Reasoning="Woke up today with a cold and stomach ache",StartAbsenceDate=DateTime.Parse("2023-03-23"),EndAbsenceDate=DateTime.Parse("2023-03-24"),Accepted=true},
-                new AbsenceProposal{Title="Absence Wedding",ReasonAbsence="Other",Reasoning="My brother is going to marry his fiancee and has invited me to be there",StartAbsenceDate=DateTime.Parse("2023-03-24"),EndAbsenceDate=DateTime.Parse("2023-03-25"),Accepted=false}
+                new AbsenceProposal{Title="Sick Today",ReasonAbsence="Sick",Reasoning="Woke up today with a cold and stomach ache",StartAbsenceDate=DateTime.Parse("2023-03-23"),EndAbsenceDate=DateTime.Parse("2023-03-24"),Accepted=true,Rejected=false},
+                new AbsenceProposal{Title="Absence Wedding",ReasonAbsence="Other",Reasoning="My brother is going to marry his fiancee and has invited me to be there",StartAbsenceDate=DateTime.Parse("2023-03-24"),EndAbsenceDate=DateTime.Parse("2023-03-25"),Accepted=false,Rejected=true}
             };
 
             context.Employees.AddRange(employees);

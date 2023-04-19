@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GeoProfs.Data;
 using GeoProfs.Models;
+using System.Globalization;
 
 namespace GeoProfs.Pages.AbsenceProposals
 {
@@ -26,20 +27,24 @@ namespace GeoProfs.Pages.AbsenceProposals
 
         [BindProperty]
         public AbsenceProposal AbsenceProposal { get; set; }
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            var emptyProposal = new AbsenceProposal();
+
+            if (await TryUpdateModelAsync<AbsenceProposal>(
+                emptyProposal,
+                "absenceProposal",   // Prefix for form value.
+                s => s.Title, s => s.ReasonAbsence, s => s.Reasoning, s => s.StartAbsenceDate, s => s.EndAbsenceDate, s => s.Accepted, s => s.Rejected))
             {
-                return Page();
+                _context.AbsenceProposals.Add(emptyProposal);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.AbsenceProposals.Add(AbsenceProposal);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }

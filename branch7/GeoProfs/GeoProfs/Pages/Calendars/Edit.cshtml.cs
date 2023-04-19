@@ -25,53 +25,44 @@ namespace GeoProfs.Pages.Calendars
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.CalendarEvents == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var calendarevent =  await _context.CalendarEvents.FirstOrDefaultAsync(m => m.ID == id);
-            if (calendarevent == null)
+            CalendarEvent = await _context.CalendarEvents.FindAsync(id);
+
+            if (CalendarEvent == null)
             {
                 return NotFound();
             }
-            CalendarEvent = calendarevent;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var eventToUpdate = await _context.CalendarEvents.FindAsync(id);
+
+            if (eventToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(CalendarEvent).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<CalendarEvent>(
+                eventToUpdate,
+                "calendarEvent",
+                s => s.Title, s => s.Description, s => s.StartDate, s => s.EndDate, s => s.Type))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CalendarEventExists(CalendarEvent.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool CalendarEventExists(int id)
+        private bool EventExists(int id)
         {
-          return _context.CalendarEvents.Any(e => e.ID == id);
+            return _context.CalendarEvents.Any(e => e.ID == id);
         }
     }
 }

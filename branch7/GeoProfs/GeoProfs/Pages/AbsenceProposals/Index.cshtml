@@ -2,40 +2,61 @@
 @model GeoProfs.Pages.AbsenceProposals.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Absence Proposals";
 }
 
-<h1>Index</h1>
+<h1>Absence Proposals</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create New Proposal</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposal[0].Title)
+                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposal[0].ReasonAbsence)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ReasonSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].ReasonAbsence)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposal[0].Reasoning)
+                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Reasoning)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposal[0].StartAbsenceDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.StartDateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].StartAbsenceDate)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposal[0].EndAbsenceDate)
+                @Html.DisplayNameFor(model => model.AbsenceProposals[0].EndAbsenceDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposal[0].Accepted)
+                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Accepted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Rejected)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.AbsenceProposal) {
+@foreach (var item in Model.AbsenceProposals) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -54,6 +75,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Accepted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rejected)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.AbsenceProposalID">Edit</a> |

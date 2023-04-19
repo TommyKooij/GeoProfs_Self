@@ -2,50 +2,74 @@
 @model GeoProfs.Pages.Employees.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employees";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Employees</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create New Employee</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].FirstMidName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.FirstNameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Employees[0].FirstMidName)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].LastName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastNameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Employees[0].LastName)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].EnrollmentDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Employees[0].EnrollmentDate)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Role)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RoleSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Employees[0].Role)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].Mail)
+                @Html.DisplayNameFor(model => model.Employees[0].Mail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].IsPresent)
+                @Html.DisplayNameFor(model => model.Employees[0].IsPresent)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].maxAbsenceDays)
+                @Html.DisplayNameFor(model => model.Employees[0].maxAbsenceDays)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].totalSickDays)
+                @Html.DisplayNameFor(model => model.Employees[0].totalSickDays)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee[0].totalOffDays)
+                @Html.DisplayNameFor(model => model.Employees[0].totalOffDays)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Employee) {
+@foreach (var item in Model.Employees) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstMidName)
@@ -83,3 +107,24 @@
 }
     </tbody>
 </table>
+
+
+@{
+    var prevDisabled = !Model.Employees.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Employees.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Employees.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Employees.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

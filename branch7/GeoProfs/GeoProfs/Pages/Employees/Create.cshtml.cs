@@ -26,20 +26,24 @@ namespace GeoProfs.Pages.Employees
 
         [BindProperty]
         public Employee Employee { get; set; }
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            var emptyEmployee = new Employee();
+
+            if (await TryUpdateModelAsync<Employee>(
+                emptyEmployee,
+                "employee",   // Prefix for form value.
+                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate, s => s.Role, s => s.Mail, s => s.IsPresent, s => s.maxAbsenceDays, s => s.totalSickDays, s => s.totalOffDays))
             {
-                return Page();
+                _context.Employees.Add(emptyEmployee);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Employees.Add(Employee);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }

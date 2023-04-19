@@ -25,53 +25,44 @@ namespace GeoProfs.Pages.AbsenceProposals
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.AbsenceProposals == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var absenceproposal =  await _context.AbsenceProposals.FirstOrDefaultAsync(m => m.AbsenceProposalID == id);
-            if (absenceproposal == null)
+            AbsenceProposal = await _context.AbsenceProposals.FindAsync(id);
+
+            if (AbsenceProposal == null)
             {
                 return NotFound();
             }
-            AbsenceProposal = absenceproposal;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var proposalToUpdate = await _context.AbsenceProposals.FindAsync(id);
+
+            if (proposalToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(AbsenceProposal).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<AbsenceProposal>(
+                proposalToUpdate,
+                "absenceProposal",
+                s => s.Title, s => s.ReasonAbsence, s => s.Reasoning, s => s.StartAbsenceDate, s => s.EndAbsenceDate, s => s.Accepted, s => s.Rejected))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AbsenceProposalExists(AbsenceProposal.AbsenceProposalID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool AbsenceProposalExists(int id)
+        private bool ProposalExists(int id)
         {
-          return _context.AbsenceProposals.Any(e => e.AbsenceProposalID == id);
+            return _context.AbsenceProposals.Any(e => e.AbsenceProposalID == id);
         }
     }
 }

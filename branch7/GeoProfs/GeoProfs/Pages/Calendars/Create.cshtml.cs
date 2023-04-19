@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GeoProfs.Data;
 using GeoProfs.Models;
+using System.Globalization;
 
 namespace GeoProfs.Pages.Calendars
 {
@@ -26,20 +27,24 @@ namespace GeoProfs.Pages.Calendars
 
         [BindProperty]
         public CalendarEvent CalendarEvent { get; set; }
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            var emptyCalendar = new CalendarEvent();
+
+            if (await TryUpdateModelAsync<CalendarEvent>(
+                emptyCalendar,
+                "calendarEvent",   // Prefix for form value.
+                s => s.Title, s => s.Description, s => s.StartDate, s => s.EndDate, s => s.Type))
             {
-                return Page();
+                _context.CalendarEvents.Add(emptyCalendar);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.CalendarEvents.Add(CalendarEvent);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }

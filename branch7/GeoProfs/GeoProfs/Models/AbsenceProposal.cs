@@ -42,6 +42,9 @@ namespace GeoProfs.Models
         [Display(Name = "Accepted")]
         public bool Accepted { get; set; }
 
+        [Display(Name = "Rejected")]
+        public bool Rejected { get; set; }
+
         public ICollection<Absence> Absences { get; set; }
     }
 }

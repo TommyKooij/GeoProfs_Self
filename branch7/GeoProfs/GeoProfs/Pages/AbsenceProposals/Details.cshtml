@@ -2,10 +2,10 @@
 @model GeoProfs.Pages.AbsenceProposals.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details Absence Proposal";
 }
 
-<h1>Details</h1>
+<h1>Details Absence Proposal</h1>
 
 <div>
     <h4>AbsenceProposal</h4>
@@ -46,6 +46,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AbsenceProposal.Accepted)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.Rejected)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.Rejected)
         </dd>
     </dl>
 </div>

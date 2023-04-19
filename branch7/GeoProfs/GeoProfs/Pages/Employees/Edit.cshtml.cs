@@ -25,53 +25,44 @@ namespace GeoProfs.Pages.Employees
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Employees == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var employee =  await _context.Employees.FirstOrDefaultAsync(m => m.ID == id);
-            if (employee == null)
+            Employee = await _context.Employees.FindAsync(id);
+
+            if (Employee == null)
             {
                 return NotFound();
             }
-            Employee = employee;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var employeeToUpdate = await _context.Employees.FindAsync(id);
+
+            if (employeeToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Employee).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<Employee>(
+                employeeToUpdate,
+                "employee",
+                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate, s => s.Role, s => s.Mail, s => s.IsPresent, s => s.maxAbsenceDays, s => s.totalSickDays, s => s.totalOffDays))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EmployeeExists(Employee.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
-        private bool EmployeeExists(int id)
+        private bool EmployeesExists(int id)
         {
-          return _context.Employees.Any(e => e.ID == id);
+            return _context.Employees.Any(e => e.ID == id);
         }
     }
 }
