@@ -3,8 +3,10 @@
     "",
     "\\GeoProfs",
     "\\GeoProfs\\GeoProfs",
-    "\\GeoProfs\\GeoProfs\\Data"
+    "\\GeoProfs\\GeoProfs\\Data",
+    "\\GeoProfs\\GeoProfs\\Pages",
+    "\\GeoProfs\\GeoProfs\\Pages\\AbsenceProposals"
   ],
-  "SelectedNode": "\\GeoProfs\\GeoProfs\\Data\\DbInitializer.cs",
+  "SelectedNode": "\\GeoProfs\\GeoProfs\\Pages\\AbsenceProposals\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

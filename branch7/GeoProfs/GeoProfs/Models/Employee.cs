@@ -34,7 +34,7 @@ namespace GeoProfs.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Enrollment Date")]
+        [Display(Name = "Hire Date")]
         public DateTime EnrollmentDate { get; set; }
 
         //public int RoleID { get; set; }

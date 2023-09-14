@@ -23,6 +23,8 @@
     </div>
 </form>
 
+@*show absence amount here for managers*@
+
 <table class="table">
     <thead>
         <tr>
@@ -60,7 +62,10 @@
                 @Html.DisplayNameFor(model => model.Employees[0].Mail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employees[0].IsPresent)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.IsPresentSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Employees[0].IsPresent)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employees[0].AbsenceDaysLeft)
