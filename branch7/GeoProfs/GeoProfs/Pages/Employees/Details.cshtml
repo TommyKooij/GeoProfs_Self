@@ -37,6 +37,12 @@
             @Html.DisplayFor(model => model.Employee.Role)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee.Team)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Team)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Employee.Mail)
         </dt>
         <dd class="col-sm-10">
@@ -49,22 +55,10 @@
             @Html.DisplayFor(model => model.Employee.IsPresent)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.maxAbsenceDays)
+            @Html.DisplayNameFor(model => model.Employee.AbsenceDaysLeft)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.maxAbsenceDays)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.totalSickDays)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.totalSickDays)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.totalOffDays)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.totalOffDays)
+            @Html.DisplayFor(model => model.Employee.AbsenceDaysLeft)
         </dd>
     </dl>
 </div>

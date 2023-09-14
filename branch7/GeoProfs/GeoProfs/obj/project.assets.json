@@ -10464,11 +10464,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tjwck\\OneDrive\\Documenten\\School\\GeoProfs4\\GeoProfs5\\GeoProfs_Self-branch4\\branch4\\GeoProfs2\\GeoProfs\\GeoProfs\\GeoProfs.csproj",
+      "projectUniqueName": "C:\\Users\\tjwck\\OneDrive\\Documenten\\GitHub\\GeoProfs_Self\\branch7\\GeoProfs\\GeoProfs\\GeoProfs.csproj",
       "projectName": "GeoProfs",
-      "projectPath": "C:\\Users\\tjwck\\OneDrive\\Documenten\\School\\GeoProfs4\\GeoProfs5\\GeoProfs_Self-branch4\\branch4\\GeoProfs2\\GeoProfs\\GeoProfs\\GeoProfs.csproj",
+      "projectPath": "C:\\Users\\tjwck\\OneDrive\\Documenten\\GitHub\\GeoProfs_Self\\branch7\\GeoProfs\\GeoProfs\\GeoProfs.csproj",
       "packagesPath": "C:\\Users\\tjwck\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tjwck\\OneDrive\\Documenten\\School\\GeoProfs4\\GeoProfs5\\GeoProfs_Self-branch4\\branch4\\GeoProfs2\\GeoProfs\\GeoProfs\\obj\\",
+      "outputPath": "C:\\Users\\tjwck\\OneDrive\\Documenten\\GitHub\\GeoProfs_Self\\branch7\\GeoProfs\\GeoProfs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tjwck\\AppData\\Roaming\\NuGet\\NuGet.Config",

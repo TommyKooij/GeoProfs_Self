@@ -24,14 +24,14 @@ namespace GeoProfs.Data
 
             var employees = new Employee[]
             {
-                new Employee{FirstMidName="Carson",LastName="Alexander",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
-                new Employee{FirstMidName="Meredith",LastName="Alonso",Mail="mereditha@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false,maxAbsenceDays=30},
-                new Employee{FirstMidName="Arturo",LastName="Anand",Mail="arturoa@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
-                new Employee{FirstMidName="Gytis",LastName="Barzdukas",Mail="gytisb@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
-                new Employee{FirstMidName="Yan",LastName="Li",Mail="yanl@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false,maxAbsenceDays=30},
-                new Employee{FirstMidName="Peggy",LastName="Justice",Mail="peggyj@hotmail.com",EnrollmentDate=DateTime.Parse("2016-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
-                new Employee{FirstMidName="Laura",LastName="Norman",Mail="lauran@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30},
-                new Employee{FirstMidName="Nino",LastName="Olivetto",Mail="ninoo@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true,maxAbsenceDays=30}
+                new Employee{FirstMidName="Carson",LastName="Alexander",Team="Design",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true,MaxAbsenceDays=30},
+                new Employee{FirstMidName="Meredith",LastName="Alonso",Team="Design",Mail="mereditha@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false,MaxAbsenceDays=30},
+                new Employee{FirstMidName="Arturo",LastName="Anand",Team="Management",Mail="arturoa@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true,MaxAbsenceDays=30},
+                new Employee{FirstMidName="Gytis",LastName="Barzdukas",Team="Management",Mail="gytisb@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=true,MaxAbsenceDays=30},
+                new Employee{FirstMidName="Yan",LastName="Li",Team="Management",Mail="yanl@hotmail.com",EnrollmentDate=DateTime.Parse("2017-09-01"),Role="Employee",IsPresent=false,MaxAbsenceDays=30},
+                new Employee{FirstMidName="Peggy",LastName="Justice",Team="Accountancy",Mail="peggyj@hotmail.com",EnrollmentDate=DateTime.Parse("2016-09-01"),Role="Employee",IsPresent=true,MaxAbsenceDays=30},
+                new Employee{FirstMidName="Laura",LastName="Norman",Team="Accountancy",Mail="lauran@hotmail.com",EnrollmentDate=DateTime.Parse("2018-09-01"),Role="Employee",IsPresent=true,MaxAbsenceDays=30},
+                new Employee{FirstMidName="Nino",LastName="Olivetto",Team="Accountancy",Mail="ninoo@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true,MaxAbsenceDays=30}
             };
 
             var calendarEvents = new CalendarEvent[]

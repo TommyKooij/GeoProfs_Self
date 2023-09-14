@@ -4,6 +4,7 @@ using GeoProfs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GeoProfs.Migrations
 {
     [DbContext(typeof(GeoProfsContext))]
-    partial class GeoProfsContextModelSnapshot : ModelSnapshot
+    [Migration("20230912085812_teams")]
+    partial class teams
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,9 +124,6 @@ namespace GeoProfs.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("DaysOfAbsence")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EnrollmentDate")
                         .HasColumnType("datetime2");
 
@@ -147,9 +146,6 @@ namespace GeoProfs.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MaxAbsenceDays")
-                        .HasColumnType("int");
-
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
 
@@ -157,6 +153,15 @@ namespace GeoProfs.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("maxAbsenceDays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("totalOffDays")
+                        .HasColumnType("int");
+
+                    b.Property<int>("totalSickDays")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 

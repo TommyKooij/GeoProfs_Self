@@ -44,6 +44,11 @@ namespace GeoProfs.Models
         public string Role { get; set; }
 
         [Required]
+        [Display(Name = "Team")]
+        [StringLength(50, ErrorMessage = "Team cannot be longer than 50 characters.")]
+        public string Team { get; set; }
+
+        [Required]
         [Display(Name="Mail")]
         public string Mail { get; set; }
 
@@ -53,20 +58,17 @@ namespace GeoProfs.Models
         public bool IsPresent { get; set; }
 
         [Display(Name = "Max. Absence Days")]
-        public int maxAbsenceDays { get; set; }
+        public int MaxAbsenceDays { get; set; }
 
-        [Display(Name = "Total Sick Days")]
-        public int totalSickDays { get; set; }
-
-        [Display(Name = "Total Days Off")]
-        public int totalOffDays { get; set; }
+        [Display(Name = "Day of Absence")]
+        public int DaysOfAbsence { get; set; }
 
         [Display(Name = "Absence Days Left")]
-        public int absenceDaysLeft
+        public int AbsenceDaysLeft
         {
             get
             {
-                return maxAbsenceDays - (totalSickDays + totalOffDays);
+                return MaxAbsenceDays - DaysOfAbsence;
             }
         }
     }

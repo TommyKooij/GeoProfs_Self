@@ -51,7 +51,7 @@ namespace GeoProfs.Pages.Employees
             if (await TryUpdateModelAsync<Employee>(
                 employeeToUpdate,
                 "employee",
-                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate, s => s.Role, s => s.Mail, s => s.IsPresent, s => s.maxAbsenceDays, s => s.totalSickDays, s => s.totalOffDays))
+                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate, s => s.Role, s => s.Team, s => s.Mail, s => s.IsPresent, s => s.AbsenceDaysLeft))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

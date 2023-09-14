@@ -26,6 +26,7 @@ namespace GeoProfs.Pages.Employees
         public string LastNameSort { get; set; }
         public string DateSort { get; set; }
         public string RoleSort { get; set; }
+        public string TeamSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
@@ -39,6 +40,7 @@ namespace GeoProfs.Pages.Employees
             LastNameSort = String.IsNullOrEmpty(sortOrder) ? "lastName_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
             RoleSort = sortOrder == "Role" ? "role_desc" : "Role";
+            TeamSort = sortOrder == "Team" ? "team_desc" : "Team";
             if (searchString != null)
             {
                 pageIndex = 1;
@@ -74,6 +76,9 @@ namespace GeoProfs.Pages.Employees
                     break;
                 case "role_desc":
                     employeesIQ = employeesIQ.OrderBy(s => s.Role);
+                    break;
+                case "team_desc":
+                    employeesIQ = employeesIQ.OrderBy(s => s.Team);
                     break;
                 default:
                     employeesIQ = employeesIQ.OrderBy(s => s.LastName);
