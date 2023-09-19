@@ -19,6 +19,7 @@ namespace GeoProfs.Data
         public DbSet<AbsenceProposal> AbsenceProposals { get; set; }
         public DbSet<Absence> Absences { get; set; }
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

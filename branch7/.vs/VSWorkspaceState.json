@@ -4,9 +4,10 @@
     "\\GeoProfs",
     "\\GeoProfs\\GeoProfs",
     "\\GeoProfs\\GeoProfs\\Data",
+    "\\GeoProfs\\GeoProfs\\Models",
     "\\GeoProfs\\GeoProfs\\Pages",
     "\\GeoProfs\\GeoProfs\\Pages\\AbsenceProposals"
   ],
-  "SelectedNode": "\\GeoProfs\\GeoProfs\\Pages\\AbsenceProposals\\Index.cshtml",
+  "SelectedNode": "\\GeoProfs\\GeoProfs\\Models\\Employee.cs",
   "PreviewInSolutionExplorer": false
 }

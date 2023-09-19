@@ -23,15 +23,6 @@ namespace GeoProfs.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        /*        [Display(Name = "Full Name")]
-                public string FullName
-                {
-                    get
-                    {
-                        return LastName + ", " + FirstMidName;
-                    }
-                }*/
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Hire Date")]

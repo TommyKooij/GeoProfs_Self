@@ -22,6 +22,16 @@ namespace GeoProfs.Data
                 return;
             }
 
+            if (context.Teams.Any())
+            {
+                return;
+            }
+
+            var teams = new Team[]
+            {
+                new Team{TeamName="Design",Capacity=20,Budget=60000}
+            };
+
             var employees = new Employee[]
             {
                 new Employee{FirstMidName="Carson",LastName="Alexander",Team="Design",Mail="carsona@hotmail.com",EnrollmentDate=DateTime.Parse("2019-09-01"),Role="Employee",IsPresent=true,MaxAbsenceDays=30},
@@ -46,6 +56,7 @@ namespace GeoProfs.Data
                 new AbsenceProposal{Title="Absence Wedding",ReasonAbsence="Other",Reasoning="My brother is going to marry his fiancee and has invited me to be there",StartAbsenceDate=DateTime.Parse("2023-03-24"),EndAbsenceDate=DateTime.Parse("2023-03-25"),Accepted=false,Rejected=true}
             };
 
+            context.Teams.AddRange(teams);
             context.Employees.AddRange(employees);
             context.CalendarEvents.AddRange(calendarEvents);
             context.AbsenceProposals.AddRange(absenceProposals);

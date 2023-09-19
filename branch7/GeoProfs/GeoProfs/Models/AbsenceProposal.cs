@@ -46,5 +46,6 @@ namespace GeoProfs.Models
         public bool Rejected { get; set; }
 
         public ICollection<Absence> Absences { get; set; }
+       /* public ICollection<Employee> Employee { get; set; }*/
     }
 }
