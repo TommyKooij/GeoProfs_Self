@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GeoProfs.Models
 {
@@ -6,6 +7,7 @@ namespace GeoProfs.Models
     {
         [Key]
         public int AbsenceID { get; set; }
+        [ForeignKey("AbsenceProposalID")] 
         public int AbsenceProposalID { get; set; }
         public AbsenceProposal AbsenceProposal { get; set; }
     }

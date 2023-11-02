@@ -26,5 +26,10 @@ namespace GeoProfs.Models
         [Column("Budget")]
         [Display(Name = "Budget")]
         public int Budget { get; set; }
+
+        [Required]
+        [Column("Members")]
+        [Display(Name = "Members")]
+        public ICollection<Employee> Employees { get; set; }
     }
 }

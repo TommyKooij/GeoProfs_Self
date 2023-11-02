@@ -38,5 +38,10 @@ namespace GeoProfs.Models
         [StringLength(50, ErrorMessage = "Type cannot be longer than 500 characters.")]
         [Display(Name = "Type")]
         public string Type { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "Username cannot be longer than 50 characters.")]
+        [Display(Name = "User")]
+        public string IsFromUser { get; set; }
     }
 }

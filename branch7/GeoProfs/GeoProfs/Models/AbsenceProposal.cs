@@ -39,6 +39,12 @@ namespace GeoProfs.Models
         [Display(Name = "End Absence Date")]
         public DateTime EndAbsenceDate { get; set; }
 
+        [Display(Name = "Mail Sender")]
+        public string MailEmployee { get; set; }
+
+        [Display(Name = "Mail Recipient")]
+        public string MailManager { get; set; }
+
         [Display(Name = "Accepted")]
         public bool Accepted { get; set; }
 
@@ -46,6 +52,5 @@ namespace GeoProfs.Models
         public bool Rejected { get; set; }
 
         public ICollection<Absence> Absences { get; set; }
-       /* public ICollection<Employee> Employee { get; set; }*/
     }
 }

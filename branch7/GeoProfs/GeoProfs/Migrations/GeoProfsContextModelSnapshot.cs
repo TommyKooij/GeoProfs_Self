@@ -54,6 +54,12 @@ namespace GeoProfs.Migrations
                     b.Property<DateTime>("EndAbsenceDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("MailEmployee")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MailManager")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ReasonAbsence")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -95,6 +101,11 @@ namespace GeoProfs.Migrations
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("IsFromUser")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -151,16 +162,44 @@ namespace GeoProfs.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Team")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("TeamID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
+                    b.HasIndex("TeamID");
+
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("GeoProfs.Models.Team", b =>
+                {
+                    b.Property<int>("TeamID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamID"), 1L, 1);
+
+                    b.Property<int>("Budget")
+                        .HasColumnType("int")
+                        .HasColumnName("Budget");
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int")
+                        .HasColumnName("Capacity");
+
+                    b.Property<string>("TeamName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("TeamName");
+
+                    b.HasKey("TeamID");
+
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -376,6 +415,15 @@ namespace GeoProfs.Migrations
                     b.Navigation("AbsenceProposal");
                 });
 
+            modelBuilder.Entity("GeoProfs.Models.Employee", b =>
+                {
+                    b.HasOne("GeoProfs.Models.Team", "Team")
+                        .WithMany("Employees")
+                        .HasForeignKey("TeamID");
+
+                    b.Navigation("Team");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -430,6 +478,11 @@ namespace GeoProfs.Migrations
             modelBuilder.Entity("GeoProfs.Models.AbsenceProposal", b =>
                 {
                     b.Navigation("Absences");
+                });
+
+            modelBuilder.Entity("GeoProfs.Models.Team", b =>
+                {
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

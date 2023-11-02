@@ -1,16 +1,24 @@
 ﻿@page
 @model GeoProfs.Pages.Employees.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Employees";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Employees</h1>
+@if(SignInManager.IsSignedIn(User))
+{
+    <h1>Employees</h1>
 
-<p>
-    <a asp-page="Create">Create New Employee</a>
-</p>
+    @if(User.IsInRole("Admin"))
+    {
+        <p>
+            <a asp-page="Create">Create New Employee</a>
+        </p>
+    }
 
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
@@ -100,16 +108,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AbsenceDaysLeft)
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> 
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> 
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                        }
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        }
+                    </td>
         </tr>
 }
     </tbody>
 </table>
-
+}
 
 @{
     var prevDisabled = !Model.Employees.HasPreviousPage ? "disabled" : "";

@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using GeoProfs.Data;
 using GeoProfs.Models;
 using System.Globalization;
+using Ical.Net;
+using Ical.Net.DataTypes;
+using Ical.Net.Serialization;
+using Microsoft.Extensions.Logging;
 
 namespace GeoProfs.Pages.Calendars
 {
@@ -84,5 +88,25 @@ namespace GeoProfs.Pages.Calendars
             CalendarEvents = await PaginatedList<CalendarEvent>.CreateAsync(
                 calendarsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
+
+        /*public async Task CreateCalendarItem()
+        {
+            var calendar = new Ical.Net.Calendar();
+            foreach (var res in reg.Reservations)
+            {
+                calendar.Events.Add(new Event
+                {
+                    Class = "PUBLIC",
+                    Summary = res.Summary,
+                    Created = new CalDateTime(DateTime.Now),
+                    Description = res.Details,
+                    Start = new CalDateTime(Convert.ToDateTime(res.BeginDate)),
+                    End = new CalDateTime(Convert.ToDateTime(res.EndDate)),
+                    Sequence = 0,
+                    Uid = Guid.NewGuid().ToString(),
+                    Location = res.Location,
+                });
+            }
+        }*/
     }
 }

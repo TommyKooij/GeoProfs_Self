@@ -1,5 +1,8 @@
 ﻿@page
 @model GeoProfs.Pages.AbsenceProposals.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Absence Proposals";
@@ -7,86 +10,111 @@
 
 <h1>Absence Proposals</h1>
 
-<p>
-    <a asp-page="Create">Create New Proposal</a>
-</p>
-
-<form asp-page="./Index" method="get">
-    <div class="form-actions no-color">
+@if(SignInManager.IsSignedIn(User))
+{
+    @if(User.IsInRole("Admin") || User.IsInRole("Employee"))
+    {
         <p>
-            Find by name:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
+            <a asp-page="Create">Create New Proposal</a>
         </p>
-    </div>
-</form>
+    }
 
-@*show absence left for employees*@
+    <form asp-page="./Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by name:
+                <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                <input type="submit" value="Search" class="btn btn-primary" /> |
+                <a asp-page="./Index">Back to full List</a>
+            </p>
+        </div>
+    </form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Title)
-            </th>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.ReasonSort"
+    @*show absence left for employees*@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].Title)
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.ReasonSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].ReasonAbsence)
-                </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Reasoning)
-            </th>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.StartDateSort"
+                        @Html.DisplayNameFor(model => model.AbsenceProposals[0].ReasonAbsence)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].Reasoning)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].MailEmployee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].MailManager)
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.StartDateSort"
                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].StartAbsenceDate)
-                </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposals[0].EndAbsenceDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Accepted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AbsenceProposals[0].Rejected)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.AbsenceProposals) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReasonAbsence)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reasoning)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartAbsenceDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndAbsenceDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Accepted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rejected)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.AbsenceProposalID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.AbsenceProposalID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.AbsenceProposalID">Delete</a>
-            </td>
-        </tr>
+                        @Html.DisplayNameFor(model => model.AbsenceProposals[0].StartAbsenceDate)
+                    </a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].EndAbsenceDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].Accepted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AbsenceProposals[0].Rejected)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AbsenceProposals)
+            {
+                if (item.MailEmployee == User.Identity.Name || item.MailManager == User.Identity.Name)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReasonAbsence)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Reasoning)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MailEmployee)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MailManager)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartAbsenceDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndAbsenceDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Accepted)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rejected)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.AbsenceProposalID">Edit</a>
+                            <a asp-page="./Details" asp-route-id="@item.AbsenceProposalID">Details</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-page="./Delete" asp-route-id="@item.AbsenceProposalID">Delete</a>
+                            }
+                        </td>
+                    </tr>
+                } 
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>

@@ -15,20 +15,20 @@ namespace GeoProfs.Data
         {
         }
 
+        public DbSet<Team> Teams { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<AbsenceProposal> AbsenceProposals { get; set; }
         public DbSet<Absence> Absences { get; set; }
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
-        public DbSet<Team> Teams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /*modelBuilder.Entity<Employee>().ToTable("Employee");
-            modelBuilder.Entity<Department>().ToTable("Department");
+            /*modelBuilder.Entity<Team>().ToTable("Team")
+                .HasMany(e => e.Employees);
+            modelBuilder.Entity<Employee>().ToTable("Employee");
             modelBuilder.Entity<AbsenceProposal>().ToTable("Absence Proposal");
             modelBuilder.Entity<Absence>().ToTable("Absence");
-            modelBuilder.Entity<CalendarEvent>().ToTable("Calendar");
-            modelBuilder.Entity<Manager>().ToTable("Manager");*/
+            modelBuilder.Entity<CalendarEvent>().ToTable("Calendar");*/
             base.OnModelCreating(modelBuilder);
         }
     }

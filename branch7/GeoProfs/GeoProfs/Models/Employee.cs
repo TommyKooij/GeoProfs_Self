@@ -28,16 +28,14 @@ namespace GeoProfs.Models
         [Display(Name = "Hire Date")]
         public DateTime EnrollmentDate { get; set; }
 
-        //public int RoleID { get; set; }
-
-        //[ForeignKey("RoleID")]
         [Display(Name = "Role")]
+        [StringLength(50, ErrorMessage = "Role cannot be longer than 50 characters.")]
         public string Role { get; set; }
 
-        [Required]
         [Display(Name = "Team")]
-        [StringLength(50, ErrorMessage = "Team cannot be longer than 50 characters.")]
-        public string Team { get; set; }
+        public Team Team { get; set; }
+
+        [ForeignKey("TeamID")]
 
         [Required]
         [Display(Name="Mail")]

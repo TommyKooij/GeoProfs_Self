@@ -37,7 +37,7 @@ namespace GeoProfs.Pages.AbsenceProposals
             if (await TryUpdateModelAsync<AbsenceProposal>(
                 emptyProposal,
                 "absenceProposal",   // Prefix for form value.
-                s => s.Title, s => s.ReasonAbsence, s => s.Reasoning, s => s.StartAbsenceDate, s => s.EndAbsenceDate, s => s.Accepted, s => s.Rejected))
+                s => s.Title, s => s.ReasonAbsence, s => s.Reasoning, s => s.MailEmployee, s => s.MailManager, s => s.StartAbsenceDate, s => s.EndAbsenceDate, s => s.Accepted, s => s.Rejected))
             {
                 _context.AbsenceProposals.Add(emptyProposal);
                 await _context.SaveChangesAsync();

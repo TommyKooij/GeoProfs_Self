@@ -51,7 +51,7 @@ namespace GeoProfs.Pages.AbsenceProposals
             if (await TryUpdateModelAsync<AbsenceProposal>(
                 proposalToUpdate,
                 "absenceProposal",
-                s => s.Title, s => s.ReasonAbsence, s => s.Reasoning, s => s.StartAbsenceDate, s => s.EndAbsenceDate, s => s.Accepted, s => s.Rejected))
+                s => s.Title, s => s.ReasonAbsence, s => s.Reasoning, s => s.MailEmployee, s => s.MailManager, s => s.StartAbsenceDate, s => s.EndAbsenceDate, s => s.Accepted, s => s.Rejected))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

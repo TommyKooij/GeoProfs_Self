@@ -1,5 +1,8 @@
 ﻿@page
 @model GeoProfs.Pages.AbsenceProposals.DetailsModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Details Absence Proposal";
@@ -8,7 +11,6 @@
 <h1>Details Absence Proposal</h1>
 
 <div>
-    <h4>AbsenceProposal</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -28,6 +30,18 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AbsenceProposal.Reasoning)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.MailEmployee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.MailEmployee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenceProposal.MailManager)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AbsenceProposal.MailManager)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AbsenceProposal.StartAbsenceDate)
@@ -55,7 +69,14 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.AbsenceProposal?.AbsenceProposalID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+@if(SignInManager.IsSignedIn(User))
+{
+    <div>
+        @if(User.IsInRole("Admin"))
+        {
+            <a asp-page="./Edit" asp-route-id="@Model.AbsenceProposal?.AbsenceProposalID">Edit</a>
+        }
+        <a asp-page="./Index">Back to List</a>
+    </div>
+
+}
