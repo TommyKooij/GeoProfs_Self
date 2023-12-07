@@ -13,6 +13,7 @@ using Ical.Net;
 using Ical.Net.DataTypes;
 using Ical.Net.Serialization;
 using Microsoft.Extensions.Logging;
+using System.Text;
 
 namespace GeoProfs.Pages.Calendars
 {
@@ -89,24 +90,62 @@ namespace GeoProfs.Pages.Calendars
                 calendarsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
 
-        /*public async Task CreateCalendarItem()
+        public void GenerateICSFile(CalendarEvent calendarEvent)
         {
-            var calendar = new Ical.Net.Calendar();
-            foreach (var res in reg.Reservations)
-            {
-                calendar.Events.Add(new Event
-                {
-                    Class = "PUBLIC",
-                    Summary = res.Summary,
-                    Created = new CalDateTime(DateTime.Now),
-                    Description = res.Details,
-                    Start = new CalDateTime(Convert.ToDateTime(res.BeginDate)),
-                    End = new CalDateTime(Convert.ToDateTime(res.EndDate)),
-                    Sequence = 0,
-                    Uid = Guid.NewGuid().ToString(),
-                    Location = res.Location,
-                });
-            }
-        }*/
+            //some variables for demo purposes
+            DateTime DateStart = calendarEvent.StartDate;
+            DateTime DateEnd = calendarEvent.EndDate;
+            string Summary = calendarEvent.Title;
+            string Description = calendarEvent.Description;
+            string FileName = "CalendarItem";
+
+            //create a new stringbuilder instance
+            StringBuilder sb = new StringBuilder();
+
+            //start the calendar item
+            sb.AppendLine("BEGIN:VCALENDAR");
+            sb.AppendLine("VERSION:2.0");
+            sb.AppendLine("PRODID:stackoverflow.com");
+            sb.AppendLine("CALSCALE:GREGORIAN");
+            sb.AppendLine("METHOD:PUBLISH");
+
+            //create a time zone if needed, TZID to be used in the event itself
+            sb.AppendLine("BEGIN:VTIMEZONE");
+            sb.AppendLine("TZID:Europe/Amsterdam");
+            sb.AppendLine("BEGIN:STANDARD");
+            sb.AppendLine("TZOFFSETTO:+0100");
+            sb.AppendLine("TZOFFSETFROM:+0100");
+            sb.AppendLine("END:STANDARD");
+            sb.AppendLine("END:VTIMEZONE");
+
+            //add the event
+            sb.AppendLine("BEGIN:VEVENT");
+
+            //with time zone specified
+            sb.AppendLine("DTSTART;TZID=Europe/Amsterdam:" + DateStart.ToString("yyyyMMddTHHmm00"));
+            sb.AppendLine("DTEND;TZID=Europe/Amsterdam:" + DateEnd.ToString("yyyyMMddTHHmm00"));
+            //or without
+            sb.AppendLine("DTSTART:" + DateStart.ToString("yyyyMMddTHHmm00"));
+            sb.AppendLine("DTEND:" + DateEnd.ToString("yyyyMMddTHHmm00"));
+
+            sb.AppendLine("SUMMARY:" + Summary + "");
+            sb.AppendLine("DESCRIPTION:" + Description + "");
+            sb.AppendLine("PRIORITY:3");
+            sb.AppendLine("END:VEVENT");
+
+            //end calendar item
+            sb.AppendLine("END:VCALENDAR");
+
+            //create a string from the stringbuilder
+            string CalendarItem = sb.ToString();
+
+            //send the calendar item to the browser
+            Response.Headers.Clear();
+            Response.Clear();
+            Response.ContentType = "text/calendar";
+            Response.Headers.Add("content-length", CalendarItem.Length.ToString());
+            Response.Headers.Add("content-disposition", "attachment; filename=\"" + FileName + ".ics\"");
+            Response.WriteAsync(CalendarItem);
+        }
     }
 }

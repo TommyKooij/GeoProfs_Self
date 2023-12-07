@@ -823,3 +823,5 @@ C:\Users\tjwck\OneDrive\Documenten\GitHub\GeoProfs_Self\branch7\GeoProfs\GeoProf
 C:\Users\tjwck\OneDrive\Documenten\GitHub\GeoProfs_Self\branch7\GeoProfs\GeoProfs\obj\Debug\net6.0\GeoProfs.pdb
 C:\Users\tjwck\OneDrive\Documenten\GitHub\GeoProfs_Self\branch7\GeoProfs\GeoProfs\obj\Debug\net6.0\GeoProfs.genruntimeconfig.cache
 C:\Users\tjwck\OneDrive\Documenten\GitHub\GeoProfs_Self\branch7\GeoProfs\GeoProfs\obj\Debug\net6.0\ref\GeoProfs.dll
+C:\Users\tjwck\OneDrive\Documenten\GitHub\GeoProfs_Self\branch7\GeoProfs\GeoProfs\bin\Debug\net6.0\Ical.Net.dll
+C:\Users\tjwck\OneDrive\Documenten\GitHub\GeoProfs_Self\branch7\GeoProfs\GeoProfs\bin\Debug\net6.0\NodaTime.dll

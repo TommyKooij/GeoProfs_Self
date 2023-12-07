@@ -93,6 +93,9 @@
                             <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
                         }
                     </td>
+                    <td>
+                        <input type="button" value="Download" onclick="GenerateICSFile()">
+                    </td>
                 </tr>
             }
         </tbody>
